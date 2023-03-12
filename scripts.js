@@ -42,7 +42,7 @@ class DOMManager {
     static books;
 
     static getAllBooks() {
-        HouseService.getAllBooks().then(houses => this.render(books));
+        HouseService.getAllBooks().then(books => this.render(books));
     }
 
     static addBook(title, author) {
@@ -90,3 +90,4 @@ $('#create-new-book').click(() => {
 });
 
 DOMManager.getAllBooks();
+console.log("testing dom manager function");
