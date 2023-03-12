@@ -1,0 +1,7 @@
+input {
+    padding: 12px;
+}
+
+.card-title, .card-body {
+    font-family: 'Lora', serif;
+}

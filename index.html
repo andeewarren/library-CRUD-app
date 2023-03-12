@@ -5,24 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Library</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+    
 </head>
-<body class="container">
-    <div id="new-book" class="container-fluid">
-            <h2>New House</h2>
-        <div class="row mt-2 mb-2 ms-auto">
-            <input type="text" id="new-book-title" class="col" placeholder="Title">
-            <input type="text" id="new-book-author" class="col ms-2" placeholder="Author"><br>
-        <div class="row mt-2 mb-2 ms-auto">
-            <input type="url" id="new-book-cover" class="col" placeholder="Cover URL">
+<body>
+    <div class="container">
+        <div id="new-book-card" class="card text-bg-light border-info mt-4">
+            <div class="card-body">
+                <h1 class="card-title"><strong>New House</strong></h1>
+                <div class="row mt-2 ms-auto">
+                    <input type="text" id="new-book-title" class="col" placeholder="Title">
+                    <input type="text" id="new-book-author" class="col ms-2 me-4" placeholder="Author"><br>
+                <div class="row mt-2 mb-2">
+                    <input type="url" id="new-book-cover" class="col" placeholder="Cover URL">
+                </div>
+                </div>
+                <button id="create-new-book" class="btn btn-info btn-lg">Add</button>
+            </div>
         </div>
-        </div>
-        <button id="create-new-book" class="btn btn-primary">Add</button>
     </div>
     <br>
-    <div id="app" class="row row-cols-3">
-        
+    <div class="container">
+        <div id="app" class="row row-cols-3">
+            
+        </div>
     </div>
 
     <script src="node_modules/jquery/dist/jquery.js"></script>
