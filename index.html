@@ -4,19 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Library</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
 
 </head>
 <body class="container">
-    <div id="new-book" class="jumbotron"> <!--jumbotron is defunct in bootstrap im pretty sure-->
-        <h2>New House</h2>
-        <input type="text" id="new-book-title" class="form-control" placeholder="Title">
-        <input type="text" id="new-book-author" class="form-control" placeholder="Author"><br>
-        <button id="create-new-book" class="btn btn-primary form-control">Create</button>
+    <div id="new-book" class="container-fluid">
+            <h2>New House</h2>
+        <div class="row mt-2 mb-2 ms-auto">
+            <input type="text" id="new-book-title" class="col" placeholder="Title">
+            <input type="text" id="new-book-author" class="col ms-2" placeholder="Author"><br>
+        <div class="row mt-2 mb-2 ms-auto">
+            <input type="url" id="new-book-cover" class="col" placeholder="Cover URL">
+        </div>
+        </div>
+        <button id="create-new-book" class="btn btn-primary">Add</button>
     </div>
-
-    <div id="app">
+    <br>
+    <div id="app" class="row row-cols-3">
         
     </div>
 

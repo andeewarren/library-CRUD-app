@@ -2,10 +2,12 @@ class Book {
     constructor(title, author) {
         this.title = title;
         this.author = author;
+        this.image = '';
     }
 }
 
-class HouseService {
+
+class BookService {
     static url = "https://640a21d16ecd4f9e18c5cb25.mockapi.io/books";
 
     static getAllBooks() {
@@ -42,21 +44,21 @@ class DOMManager {
     static books;
 
     static getAllBooks() {
-        HouseService.getAllBooks().then(books => this.render(books));
+        BookService.getAllBooks().then(books => this.render(books));
     }
 
     static addBook(title, author) {
-        HouseService.addBook(new Book(title, author))
+        BookService.addBook(new Book(title, author))
             .then(() => {
-                return HouseService.getAllBooks();
+                return BookService.getAllBooks();
             })
             .then((books) => this.render(books));
     }
 
     static deleteBook(id) {
-        HouseService.deleteBook(id)
+        BookService.deleteBook(id)
             .then(() => {
-                return HouseService.getAllBooks();
+                return BookService.getAllBooks();
             })
             .then((books) => this.render(books));
             console.log("checking delete"); //runs
@@ -67,18 +69,18 @@ class DOMManager {
         console.log("test render");
         $("#app").empty();
         for (let book of books) {
+            // console.log(`${book.image}`);
             $("#app").prepend(
-                `<div id="${book.id}" class="card">
-                    <div class="card-header">
-                        <h2>${book.title}</h2>
-                    </div>
+                `<div class="col">
+                <div id="${book.id}" class="card m-1 p-1">
+                    <img id="my-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Placeholder_book.svg/928px-Placeholder_book.svg.png?20071129174344" class="card-img-top">
                     <div class="card-body">
-                        <div class="card">
+                        <h2 class="card-title">${book.title}</h2>
                             <h6>${book.author}</h6>
                             <button class="btn btn-danger" onclick="DOMManager.deleteBook('${book.id}')">Delete</button>
-                        </div>
                     </div>
-                </div><br>`
+                </div>
+                </div>`
             );
         }
     }
@@ -86,9 +88,13 @@ class DOMManager {
 
 $('#create-new-book').click(() => {
     DOMManager.addBook($('#new-book-title').val(), $('#new-book-author').val());
+    console.log($('#new-book-cover').val());
+    $('#my-image').prop("src", $('#new-book-cover').val());
+    console.log($('#my-image'))
     $('#new-book-title').val(''); 
     $('#new-book-author').val('');
+    $('#new-book-cover').val('');
 });
 
 DOMManager.getAllBooks();
-console.log("testing dom manager function");
+// console.log("testing dom manager function");
