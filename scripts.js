@@ -47,7 +47,7 @@ class DOMManager {
         BookService.getAllBooks().then(books => this.render(books));
     }
 
-    static addBook(title, author) {
+    static addBook(title, author, image) {
         BookService.addBook(new Book(title, author, image))
             .then(() => {
                 return BookService.getAllBooks();
