@@ -94,9 +94,10 @@ class DOMManager {
 }
 
 $('#create-new-book').click(() => {
+    //add if statement to set new book cover val to a default if it's empty?
     DOMManager.addBook($('#new-book-title').val(), $('#new-book-author').val(), $('#new-book-cover').val());
     console.log($('#new-book-cover').val());
-    // $('#my-image').prop("src", $('#new-book-cover').val());
+    
     console.log($('#my-image'))
     $('#new-book-title').val(''); 
     $('#new-book-author').val('');
