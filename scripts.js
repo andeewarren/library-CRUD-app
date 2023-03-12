@@ -32,7 +32,7 @@ class HouseService {
 
     static deleteBook(id){
         return $.ajax({
-            url: this.url + `${id}`,
+            url: this.url + `/${id}`,
             type: "DELETE"
         });
     }
@@ -59,22 +59,23 @@ class DOMManager {
                 return HouseService.getAllBooks();
             })
             .then((books) => this.render(books));
+            console.log("checking delete"); //runs
     }
 
     static render(books) {
         this.books = books;
-        console.log(books);
+        console.log("test render");
         $("#app").empty();
         for (let book of books) {
             $("#app").prepend(
                 `<div id="${book.id}" class="card">
                     <div class="card-header">
                         <h2>${book.title}</h2>
-                        <button class="btn btn-danger" onclick="DOMManager.deleteBook('${book.id}')">Delete</button>
                     </div>
                     <div class="card-body">
                         <div class="card">
                             <h6>${book.author}</h6>
+                            <button class="btn btn-danger" onclick="DOMManager.deleteBook('${book.id}')">Delete</button>
                         </div>
                     </div>
                 </div><br>`
