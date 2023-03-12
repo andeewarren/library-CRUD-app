@@ -1,8 +1,8 @@
 class Book {
-    constructor(title, author) {
+    constructor(title, author, image) {
         this.title = title;
         this.author = author;
-        this.image = '';
+        this.image = image;
     }
 }
 
@@ -48,11 +48,14 @@ class DOMManager {
     }
 
     static addBook(title, author) {
-        BookService.addBook(new Book(title, author))
+        BookService.addBook(new Book(title, author, image))
             .then(() => {
                 return BookService.getAllBooks();
             })
             .then((books) => this.render(books));
+        // document.getElementById("create-new-book").addEventListener("click", function(event) {
+        //     event.preventDefault()
+        // });
     }
 
     static deleteBook(id) {
@@ -67,17 +70,21 @@ class DOMManager {
     static render(books) {
         this.books = books;
         console.log("test render");
+        document.getElementById("create-new-book").addEventListener("click", function(event) {
+            event.preventDefault();
+            console.log('prevent refresh');
+        });
         $("#app").empty();
         for (let book of books) {
             // console.log(`${book.image}`);
             $("#app").prepend(
                 `<div class="col">
                 <div id="${book.id}" class="card text-bg-light border-dark m-1 p-1">
-                    <img id="my-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Placeholder_book.svg/928px-Placeholder_book.svg.png?20071129174344" class="card-img-top">
+                    <img id="my-image" src="${book.image}" class="card-img-top">
                     <div class="card-body">
                         <h2 class="card-title">${book.title}</h2>
-                            <h6>${book.author}</h6>
-                            <button class="btn btn-outline-danger" onclick="DOMManager.deleteBook('${book.id}')">Delete</button>
+                        <h6>${book.author}</h6>
+                        <button class="btn btn-outline-danger" onclick="DOMManager.deleteBook('${book.id}')">Delete</button>
                     </div>
                 </div>
                 </div>`
@@ -87,9 +94,9 @@ class DOMManager {
 }
 
 $('#create-new-book').click(() => {
-    DOMManager.addBook($('#new-book-title').val(), $('#new-book-author').val());
+    DOMManager.addBook($('#new-book-title').val(), $('#new-book-author').val(), $('#new-book-cover').val());
     console.log($('#new-book-cover').val());
-    $('#my-image').prop("src", $('#new-book-cover').val());
+    // $('#my-image').prop("src", $('#new-book-cover').val());
     console.log($('#my-image'))
     $('#new-book-title').val(''); 
     $('#new-book-author').val('');
