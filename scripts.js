@@ -53,9 +53,6 @@ class DOMManager {
                 return BookService.getAllBooks();
             })
             .then((books) => this.render(books));
-        // document.getElementById("create-new-book").addEventListener("click", function(event) {
-        //     event.preventDefault()
-        // });
     }
 
     static deleteBook(id) {
@@ -79,7 +76,7 @@ class DOMManager {
             // console.log(`${book.image}`);
             $("#app").prepend(
                 `<div class="col">
-                <div id="${book.id}" class="card text-bg-light border-dark m-1 p-1">
+                <div id="${book.id}" class="card h-100 text-bg-light border-dark p-1">
                     <img id="my-image" src="${book.image}" class="card-img-top">
                     <div class="card-body">
                         <h2 class="card-title">${book.title}</h2>
@@ -95,10 +92,15 @@ class DOMManager {
 
 $('#create-new-book').click(() => {
     //add if statement to set new book cover val to a default if it's empty?
-    DOMManager.addBook($('#new-book-title').val(), $('#new-book-author').val(), $('#new-book-cover').val());
-    console.log($('#new-book-cover').val());
-    
-    console.log($('#my-image'))
+    if ($('#new-book-cover').val() === "") {
+        console.log("replace empty input with default img");
+        var img = $('#new-book-cover').val();
+        img = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Placeholder_book.svg/928px-Placeholder_book.svg.png?20071129174344";
+        DOMManager.addBook($('#new-book-title').val(), $('#new-book-author').val(), img);
+    } else {
+        DOMManager.addBook($('#new-book-title').val(), $('#new-book-author').val(), $('#new-book-cover').val());
+        console.log("run add book as intended");
+    }
     $('#new-book-title').val(''); 
     $('#new-book-author').val('');
     $('#new-book-cover').val('');

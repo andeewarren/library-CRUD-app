@@ -2,6 +2,10 @@ input {
     padding: 12px;
 }
 
-.card-title, .card-body {
+.card {
     font-family: 'Lora', serif;
+}
+
+img {
+    height: 400px;
 }
