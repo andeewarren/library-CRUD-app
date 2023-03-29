@@ -16,6 +16,15 @@ input {
     border-color: transparent;
 }
 
+#num-objects {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: 25px;
+}
+
 #create-new-book:hover {
     background-color: #045C70;
     border-color: transparent;

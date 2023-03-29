@@ -13,19 +13,37 @@
 </head>
 <body>
     <div class="container">
-        <div id="new-book-card" class="card mt-4">
-            <div class="card-body">
-                <h1 class="card-title"><strong>Add New Book</strong></h1>
-                <form>
-                <div class="row mt-2 ms-auto">
-                    <input type="text" id="new-book-title" class="col" placeholder="Title">
-                    <input type="text" id="new-book-author" class="col ms-2 me-4" placeholder="Author"><br>
-                <div class="row mt-2 mb-2">
-                    <input type="url" id="new-book-cover" class="col" placeholder="Cover URL">
+        <div class="row gy-4">
+            <div class="col-md-8 col-lg-9 mb-3 mb-md-0">
+                <div id="new-book-card" class="card  mt-4">
+                    <div class="card-body">
+                        <h1 class="card-title"><strong>Add New Book</strong></h1>
+                        <form>
+                        <div class="row mt-2 ms-auto">
+                            <input type="text" id="new-book-title" class="col" placeholder="Title">
+                            <input type="text" id="new-book-authdor" class="col ms-2 me-4" placeholder="Author"><br>
+                        <div class="row mt-2 mb-2">
+                            <input type="url" id="new-book-cover" class="col" placeholder="Cover URL">
+                        </div>
+                        </div>
+                        <input type="submit" id="create-new-book" class="btn btn-info btn-lg" value="Add">
+                        </form>
+                    </div>
                 </div>
+            </div>
+        
+            <div class="col-md-4 col-lg-3 d-flex align-items-stretch ">
+                <div id="num-objects" class="card mt-4 ">
+                    <p>You currently have <span id='num-books'></span> books in your library.</p>
+                    <!-- <script>
+                        fetch('https://640a21d16ecd4f9e18c5cb25.mockapi.io/books')
+                        .then(response => response.json())
+                        .then(data => {
+                            const numObjects = data.length; // Assumes that the data is an array
+                            document.getElementById('num-objects').textContent = `You currently have ${numObjects} books in your library`;
+                        });
+                    </script> -->
                 </div>
-                <input type="submit" id="create-new-book" class="btn btn-info btn-lg" value="Add">
-                </form>
             </div>
         </div>
     </div>

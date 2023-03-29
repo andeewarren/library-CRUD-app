@@ -38,6 +38,7 @@ class BookService {
             type: "DELETE"
         });
     }
+
 }
 
 class DOMManager {
@@ -63,15 +64,32 @@ class DOMManager {
             .then((books) => this.render(books));
             console.log("checking delete"); //runs
     }
-
+    
     static render(books) {
         this.books = books;
         console.log("test render");
+        
+        function fetchData() {
+        const myData = document.getElementById('num-books');
+        fetch('https://640a21d16ecd4f9e18c5cb25.mockapi.io/books')
+          .then(response => response.json())
+          .then(data => {
+            const numObjects = data.length;
+            myData.innerHTML = JSON.stringify(numObjects);
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+          });
+        }
+        
         document.getElementById("create-new-book").addEventListener("click", function(event) {
             event.preventDefault();
             console.log('prevent refresh');
+            fetchData();
         });
+        
         $("#app").empty();
+        
         for (let book of books) {
             // console.log(`${book.image}`);
             $("#app").prepend(
@@ -81,14 +99,15 @@ class DOMManager {
                     <div class="card-body">
                         <h2 class="card-title">${book.title}</h2>
                         <h6>${book.author}</h6>
-                        <button id="delete-button" class="btn btn-outline-danger" onclick="DOMManager.deleteBook('${book.id}')">Delete</button>
+                        <button id="delete-button" class="btn btn-outline-danger" onclick="DOMManager.deleteBook('${book.id}'); ${fetchData()}">Delete</button>
                     </div>
                 </div>
                 </div>`
             );
         }
     }
-}
+    }
+
 
 $('#create-new-book').click(() => {
     //add if statement to set new book cover val to a default if it's empty?
