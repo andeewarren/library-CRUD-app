@@ -6,6 +6,7 @@ input {
 }
 
 .card {
+    font-family: 'Lora', serif;
     background-color: rgba(40, 37, 41, 0.9);
     color: #F2EFEA;
 }
@@ -29,10 +30,6 @@ input {
     background-color: #045C70;
     border-color: transparent;
     color: #F2EFEA;
-}
-
-.card {
-    font-family: 'Lora', serif;
 }
 
 img {
