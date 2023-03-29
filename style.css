@@ -1,5 +1,25 @@
+body {
+    background-image: url("https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGlicmFyeSUyMGJhY2tncm91bmR8ZW58MHx8MHx8&w=1000&q=80");
+}
 input {
     padding: 12px;
+}
+
+.card {
+    background-color: rgba(40, 37, 41, 0.9);
+    color: #F2EFEA;
+}
+
+#create-new-book {
+    background-color: #05A0C4;
+    color: #F2EFEA;
+    border-color: transparent;
+}
+
+#create-new-book:hover {
+    background-color: #045C70;
+    border-color: transparent;
+    color: #F2EFEA;
 }
 
 .card {
@@ -7,5 +27,17 @@ input {
 }
 
 img {
-    height: 400px;
+    height: auto;
+}
+
+#delete-button{
+    background-color: #CB1F09;
+    border-color: transparent;
+    color:#F2EFEA;
+}
+
+#delete-button:hover {
+    background-color: #871709;
+    border-color: transparent;
+    color: #F2EFEA;
 }

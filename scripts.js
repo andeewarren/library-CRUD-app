@@ -76,12 +76,12 @@ class DOMManager {
             // console.log(`${book.image}`);
             $("#app").prepend(
                 `<div class="col">
-                <div id="${book.id}" class="card h-100 text-bg-light border-dark p-1">
+                <div id="${book.id}" class="card h-100  p-1">
                     <img id="my-image" src="${book.image}" class="card-img-top">
                     <div class="card-body">
                         <h2 class="card-title">${book.title}</h2>
                         <h6>${book.author}</h6>
-                        <button class="btn btn-outline-danger" onclick="DOMManager.deleteBook('${book.id}')">Delete</button>
+                        <button id="delete-button" class="btn btn-outline-danger" onclick="DOMManager.deleteBook('${book.id}')">Delete</button>
                     </div>
                 </div>
                 </div>`
